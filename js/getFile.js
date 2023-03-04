@@ -40,10 +40,10 @@ const displayPhones = (phones, dataLimit) =>{
            <div class="d-flex justify-content-between align-items-center" >
              <div>
                 <h4 class="fs-5 ">${site.name}</h4> 
-                <p>${site.published_in}</p>
+                <p> <i class="fa-regular fa-calendar-days"></i> ${site.published_in}</p>
             </div>
             <div>
-            <button onclick="loadPhoneDetails('${site.id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
+            <a onclick="loadPhoneDetails('${site.id}')" style="background-color: #FEF7F7; border-radius: 50%;" href="#" class="text-danger " data-bs-toggle="modal" data-bs-target="#phoneDetailModal"><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             </div>
         </div>
@@ -83,7 +83,7 @@ const displayPhoneDetails = more =>{
     const modal = document.getElementById('modal-inner');
     modal.innerHTML = '';
     const modalInner = document.createElement('div');
-    // console.log(modalInner);
+ 
     modalInner.innerHTML = `
     <div class="d-flex justify-content-between gap-2 p-3">
     
@@ -137,32 +137,4 @@ const displayPhoneDetails = more =>{
         modal.appendChild(modalInner);
 }
 
-// const displayPhoneDetails = phone =>{
-//     console.log(phone);
-//     const modalTitle = document.getElementById('phoneDetailModalLabel');
-//     modalTitle.innerText = phone.name;
-//     const phoneDetails = document.getElementById('phone-details');
-//     console.log(phone.mainFeatures.sensors[0]);
-//     phoneDetails.innerHTML = `
-//         <p>Release Date: ${phone.releaseDate ? phone.releaseDate : 'No Release Date Found'}</p>
-//         <p>Storage: ${phone.mainFeatures ? phone.mainFeatures.storage : 'No Storage Information '}</p>
-//         <p>Others: ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
-//         <p>Sensor: ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
-//     `
-// }
-
 loadPhones(6);
-
-{/* <div class="d-flex ">
-                <div class="container">
-                    ${more.pricing[0].plan ? `<p> ${more.pricing[0].plan} </p>` : ''}
-                    ${more.pricing[0].price ? `<p> ${more.pricing[0].price} </p>` : ''}
-                <div class="pro">
-                    ${more.pricing[1].plan ? `<p> ${more.pricing[1].plan} </p>` : ''}
-                    ${more.pricing[1].price ? `<p> ${more.pricing[1].price} </p>` : ''}
-                </div>
-                <div class="enterprise">
-                    ${more.pricing[2].plan ? `<p> ${more.pricing[2].plan} </p>` : ''}
-                    ${more.pricing[2].price ? `<p> ${more.pricing[2].price} </p>` : ''}
-                </div>
-            </div> */}
