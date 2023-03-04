@@ -1,4 +1,5 @@
 const loadPhones = async(dataLimit) =>{
+    toggleSpinner(true)
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     const res = await fetch(url);
     const data = await res.json();
@@ -19,16 +20,6 @@ const displayPhones = (phones, dataLimit) =>{
         showAll.classList.add('d-none');
     }
     
-
-    // // display no phones found
-    // const noPhone = document.getElementById('no-found-message');
-    // if(phones.length === 0){
-    //     noPhone.classList.remove('d-none');
-    // }
-    // else{
-    //     noPhone.classList.add('d-none');
-    // }
-    // display all phones
     
     phones.forEach(site =>{
         const phoneDiv  = document.createElement('div');
@@ -60,18 +51,18 @@ const displayPhones = (phones, dataLimit) =>{
         phonesContainer.appendChild(phoneDiv);
     });
     // stop spinner or loader
-    // toggleSpinner(false);
+    toggleSpinner(false);
 }
 
-// const toggleSpinner = isLoading => {
-//     const loaderSection = document.getElementById('loader');
-//     if(isLoading){
-//         loaderSection.classList.remove('d-none')
-//     }
-//     else{
-//         loaderSection.classList.add('d-none');
-//     }
-// }
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none')
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
 
 
 // not the best way to load show All
