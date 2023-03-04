@@ -90,23 +90,23 @@ const displayPhoneDetails = more =>{
             <p class=""> ${more.description} </p>
             <div class="d-flex gap-2">
                 <div class="col-4 bg-white text-success text-center rounded-3">
-                    ${more.pricing[0].plan ? `<p> ${more.pricing[0].plan} </p>` : ''}
-                    ${more.pricing[0].price ? `<p> ${more.pricing[0].price} </p>` : ''}
+                    ${more.pricing[0].plan ? `<p> ${more.pricing[0].plan} </p>` : 'Not Found'}
+                    ${more.pricing[0].price ? `<p> ${more.pricing[0].price} </p>` : 'Not Found'}
                 </div>
                 <div class="col-4 bg-white text-warning text-center  rounded-3">
-                    ${more.pricing[1].plan ? `<p> ${more.pricing[1].plan} </p>` : ''}
-                    ${more.pricing[1].price ? `<p> ${more.pricing[1].price} </p>` : ''}
+                    ${more.pricing[1].plan ? `<p> ${more.pricing[1].plan} </p>` : 'Not Found'}
+                    ${more.pricing[1].price ? `<p> ${more.pricing[1].price} </p>` : 'Not Found'}
                 </div>
                 <div class="col-4 bg-white text-danger text-center rounded-3">
-                    ${more.pricing[2].plan ? `<p> ${more.pricing[2].plan} </p>` : ''}
-                    ${more.pricing[2].price ? `<p> ${more.pricing[2].price} </p>` : ''}
+                    ${more.pricing[2].plan ? `<p> ${more.pricing[2].plan} </p>` : 'Not Found'}
+                    ${more.pricing[2].price ? `<p> ${more.pricing[2].price} </p>` : 'Not Found'}
                 </div>
             </div>
             <div class="d-flex justify-content-between ">
                 <div>
                     <h3 class="fs-5">Features</h3>
                     <ul>
-                        ${more.features['1'].feature_name ? `<li> ${more.features['1'].feature_name} </li>` : ''}
+                        ${more.features['1'].feature_name ? `<li> ${more.features['1'].feature_name} </li>` : 'Not Found'}
                         ${more.features['2'].feature_name ? `<li> ${more.features['2'].feature_name} </li>` : ''}
                         ${more.features['3'].feature_name ? `<li> ${more.features['3'].feature_name} </li>` : ''}
                     </ul>
@@ -114,7 +114,7 @@ const displayPhoneDetails = more =>{
                 <div>
                     <h3 class="fs-5">Integrations</h3>
                     <ul>
-                        ${more.integrations[0] ? `<li> ${more.integrations[0]} </li>` : ''}
+                        ${more.integrations[0] ? `<li> ${more.integrations[0]} </li>` : 'Not Found'}
                         ${more.integrations[1] ? `<li> ${more.integrations[1]} </li>` : ''}
                         ${more.integrations[2] ? `<li> ${more.integrations[2]} </li>` : ''}
                         ${more.integrations[3] ? `<li> ${more.integrations[3]} </li>` : ''}
@@ -128,8 +128,8 @@ const displayPhoneDetails = more =>{
                  <img class="w-100 p-4 rounded-3" src="${more.image_link[0]}" alt="">
                  
             </div>
-            <h4> ${more.input_output_examples[0].input ? `<p> ${more.input_output_examples[0].input } </p>` : ''}</h4>
-            <P> ${more.input_output_examples[0].output ? `<p> ${more.input_output_examples[0].output } </p>` : ''}</h4>
+            <h4> ${more.input_output_examples[0].input ? `<p> ${more.input_output_examples[0].input } </p>` : 'Not Found'}</h4>
+            <P> ${more.input_output_examples[0].output ? `<p> ${more.input_output_examples[0].output } </p>` : 'Not Found'}</h4>
         </div>
     </div>` ;
         modal.appendChild(modalInner);
