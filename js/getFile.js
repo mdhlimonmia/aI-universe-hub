@@ -1,30 +1,28 @@
-const loadPhones = async(dataLimit) =>{
-    toggleSpinner(true)
+const loadSite = async(minimum) =>{
+    loade(true)
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     const res = await fetch(url);
     const data = await res.json();
-    displayPhones(data.data.tools, dataLimit);
-    // console.log(data.data.tools);
+    displaySite(data.data.tools, minimum);
 }
 
-const displayPhones = (phones, dataLimit) =>{
-    const phonesContainer = document.getElementById('phones-container');
-    phonesContainer.textContent = '';
-    // display 10 phones only 
-    const showAll = document.getElementById('show-all');
-    if(dataLimit && phones.length > 6) {
-        phones = phones.slice(0, 6);
-        showAll.classList.remove('d-none');
+const displaySite = (site, minimum) =>{
+    const siteContainer = document.getElementById('site-container');
+    siteContainer.textContent = '';
+    const seeMore = document.getElementById('show-all');
+    if(minimum && site.length > 6) {
+        site = site.slice(0, 6);
+        seeMore.classList.remove('d-none');
     }
     else{
-        showAll.classList.add('d-none');
+        seeMore.classList.add('d-none');
     }
     
     
-    phones.forEach(site =>{
-        const phoneDiv  = document.createElement('div');
-        phoneDiv.classList.add('col');
-        phoneDiv.innerHTML = `
+    site.forEach(site =>{
+        const siteBox  = document.createElement('div');
+        siteBox.classList.add('col');
+        siteBox.innerHTML = `
         <div class="card p-4" style="height: 500px">
             <img src="${site.image}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -48,13 +46,13 @@ const displayPhones = (phones, dataLimit) =>{
             </div>
         </div>
         `;
-        phonesContainer.appendChild(phoneDiv);
+        siteContainer.appendChild(siteBox);
     });
     // stop spinner or loader
-    toggleSpinner(false);
+    loade(false);
 }
 
-const toggleSpinner = isLoading => {
+const loade = isLoading => {
     const loaderSection = document.getElementById('loader');
     if(isLoading){
         loaderSection.classList.remove('d-none')
@@ -67,7 +65,7 @@ const toggleSpinner = isLoading => {
 
 // not the best way to load show All
 document.getElementById('btn-show-all').addEventListener('click', function(){
-    loadPhones()
+    loadSite()
 })
 
 const loadPhoneDetails = async id =>{
@@ -137,4 +135,4 @@ const displayPhoneDetails = more =>{
         modal.appendChild(modalInner);
 }
 
-loadPhones(6);
+loadSite(6);
