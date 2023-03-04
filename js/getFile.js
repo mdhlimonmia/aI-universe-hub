@@ -8,16 +8,16 @@ const loadPhones = async(dataLimit) =>{
 
 const displayPhones = (phones, dataLimit) =>{
     const phonesContainer = document.getElementById('phones-container');
-    // phonesContainer.textContent = '';
-    // // display 10 phones only 
-    // const showAll = document.getElementById('show-all');
-    // if(dataLimit && phones.length > 10) {
-    //     phones = phones.slice(0, 10);
-    //     showAll.classList.remove('d-none');
-    // }
-    // else{
-    //     showAll.classList.add('d-none');
-    // }
+    phonesContainer.textContent = '';
+    // display 10 phones only 
+    const showAll = document.getElementById('show-all');
+    if(dataLimit && phones.length > 6) {
+        phones = phones.slice(0, 6);
+        showAll.classList.remove('d-none');
+    }
+    else{
+        showAll.classList.add('d-none');
+    }
     
 
     // // display no phones found
@@ -34,7 +34,7 @@ const displayPhones = (phones, dataLimit) =>{
         const phoneDiv  = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = `
-        <div class="card p-4">
+        <div class="card p-4" style="height: 500px">
             <img src="${site.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">Features</h5>
@@ -63,26 +63,6 @@ const displayPhones = (phones, dataLimit) =>{
     // toggleSpinner(false);
 }
 
-// const processSearch = (dataLimit) =>{
-//     toggleSpinner(true);
-//     const searchField = document.getElementById('search-field');
-//     const searchText = searchField.value;
-//     loadPhones(searchText, dataLimit);
-// }
-
-// // handle search button click
-// document.getElementById('btn-search').addEventListener('click', function(){
-//     // start loader
-//     processSearch(10);
-// })
-
-// // search input field enter key handler
-// document.getElementById('search-field').addEventListener('keypress', function (e) {
-//     if (e.key === 'Enter') {
-//         processSearch(10);
-//     }
-// });
-
 // const toggleSpinner = isLoading => {
 //     const loaderSection = document.getElementById('loader');
 //     if(isLoading){
@@ -94,10 +74,10 @@ const displayPhones = (phones, dataLimit) =>{
 // }
 
 
-// // not the best way to load show All
-// document.getElementById('btn-show-all').addEventListener('click', function(){
-//     processSearch();
-// })
+// not the best way to load show All
+document.getElementById('btn-show-all').addEventListener('click', function(){
+    loadPhones()
+})
 
 const loadPhoneDetails = async id =>{
     const url =`https://openapi.programming-hero.com/api/ai/tool/${id}`;
@@ -154,7 +134,11 @@ const displayPhoneDetails = more =>{
             </div>
         </div>
         <div class="modal-img col-md-6 text-center border ">
-            <img class="w-75 p-5 rounded-3" src="${more.image_link[0]}" alt="">
+            <div class="position-relative"> 
+            ${more.accuracy.score ? `<p class="btn btn-danger position-absolute"  style="top: 25px; right: 25px;  border-radius: 10px;"> ${more.accuracy.score * 100 }% accuracy  </p>`: ""}
+                 <img class="w-100 p-4 rounded-3" src="${more.image_link[0]}" alt="">
+                 
+            </div>
             <h4> ${more.input_output_examples[0].input ? `<p> ${more.input_output_examples[0].input } </p>` : ''}</h4>
             <P> ${more.input_output_examples[0].output ? `<p> ${more.input_output_examples[0].output } </p>` : ''}</h4>
         </div>
@@ -176,7 +160,7 @@ const displayPhoneDetails = more =>{
 //     `
 // }
 
-loadPhones();
+loadPhones(6);
 
 {/* <div class="d-flex ">
                 <div class="container">
