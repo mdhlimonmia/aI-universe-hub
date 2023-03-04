@@ -83,7 +83,7 @@ const displayPhoneDetails = more =>{
     const modalInner = document.createElement('div');
  
     modalInner.innerHTML = `
-    <div class="d-flex justify-content-between gap-2 p-3">
+    <div class="d-md-flex justify-content-between gap-2 p-3">
     
         <div class="border p-5 col-md-6" style="
         background-color: #EB57570D;">
