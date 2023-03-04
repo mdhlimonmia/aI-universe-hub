@@ -30,17 +30,30 @@ const displayPhones = (phones, dataLimit) =>{
     // }
     // display all phones
     
-    phones.forEach(phone =>{
+    phones.forEach(site =>{
         const phoneDiv  = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = `
         <div class="card p-4">
-            <img src="${phone.image}" class="card-img-top" alt="...">
+            <img src="${site.image}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">${phone.name}</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button onclick="loadPhoneDetails('${phone.id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
-                
+            <h5 class="card-title">Features</h5>
+            <ol id = "${site.id}">
+            ${site.features[0]?  ` <li> ${site.features[0]} </li>`: ''}
+            ${site.features[1]?  ` <li> ${site.features[1]} </li>`: ''}
+            ${site.features[2]?  ` <li> ${site.features[2]} </li>`: ''}
+            ${site.features[3]?  ` <li> ${site.features[3]} </li>`: ''}
+            </ol> 
+            </div>
+            <hr>
+           <div class="d-flex justify-content-between align-items-center" >
+             <div>
+                <h4 class="fs-5 ">${site.name}</h4> 
+                <p>${site.published_in}</p>
+            </div>
+            <div>
+            <button onclick="loadPhoneDetails('${site.id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
+            </div>
             </div>
         </div>
         `;
@@ -105,17 +118,17 @@ const displayPhoneDetails = more =>{
     
         <div class="border p-5 col-md-6" style="
         background-color: #EB57570D;">
-            <p class="modal-discript "> ${more.description} </p>
-            <div class="d-flex">
-                <div class="col-4 bg-white text-success">
+            <p class=""> ${more.description} </p>
+            <div class="d-flex gap-2">
+                <div class="col-4 bg-white text-success text-center rounded-3">
                     ${more.pricing[0].plan ? `<p> ${more.pricing[0].plan} </p>` : ''}
                     ${more.pricing[0].price ? `<p> ${more.pricing[0].price} </p>` : ''}
                 </div>
-                <div class="col-4">
+                <div class="col-4 bg-white text-warning text-center  rounded-3">
                     ${more.pricing[1].plan ? `<p> ${more.pricing[1].plan} </p>` : ''}
                     ${more.pricing[1].price ? `<p> ${more.pricing[1].price} </p>` : ''}
                 </div>
-                <div class="col-4">
+                <div class="col-4 bg-white text-danger text-center rounded-3">
                     ${more.pricing[2].plan ? `<p> ${more.pricing[2].plan} </p>` : ''}
                     ${more.pricing[2].price ? `<p> ${more.pricing[2].price} </p>` : ''}
                 </div>
@@ -140,8 +153,8 @@ const displayPhoneDetails = more =>{
                 </div>
             </div>
         </div>
-        <div class="modal-img col-md-6 text-center border">
-            <img class="w-50 " src="${more.image_link[0]}" alt="">
+        <div class="modal-img col-md-6 text-center border ">
+            <img class="w-75 p-5 rounded-3" src="${more.image_link[0]}" alt="">
             <h4> ${more.input_output_examples[0].input ? `<p> ${more.input_output_examples[0].input } </p>` : ''}</h4>
             <P> ${more.input_output_examples[0].output ? `<p> ${more.input_output_examples[0].output } </p>` : ''}</h4>
         </div>
