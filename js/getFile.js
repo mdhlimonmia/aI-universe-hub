@@ -9,7 +9,7 @@ const loadSite = async(minimum) =>{
 const displaySite = (site, minimum) =>{
     const siteContainer = document.getElementById('site-container');
     siteContainer.textContent = '';
-    const seeMore = document.getElementById('show-all');
+    const seeMore = document.getElementById('see-more');
     if(minimum && site.length > 6) {
         site = site.slice(0, 6);
         seeMore.classList.remove('d-none');
@@ -64,7 +64,7 @@ const loade = isLoading => {
 
 
 // not the best way to load show All
-document.getElementById('btn-show-all').addEventListener('click', function(){
+document.getElementById('btn-see-more').addEventListener('click', function(){
     loadSite()
 })
 
