@@ -28,7 +28,7 @@ const displaySite = (site, minimum) =>{
             <div class="card-body">
             <h5 class="card-title">Features</h5>
             <ol id = "${site.id}">
-            ${site.features[0]?  ` <li> ${site.features[0]} </li>`: ''}
+            ${site.features[0]?  ` <li> ${site.features[0]} </li>`: 'No Features Found'}
             ${site.features[1]?  ` <li> ${site.features[1]} </li>`: ''}
             ${site.features[2]?  ` <li> ${site.features[2]} </li>`: ''}
             ${site.features[3]?  ` <li> ${site.features[3]} </li>`: ''}
@@ -134,5 +134,4 @@ const displayPhoneDetails = more =>{
     </div>` ;
         modal.appendChild(modalInner);
 }
-
 loadSite(6);
